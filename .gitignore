@@ -1,0 +1,6 @@
+notes/
+.vs/
+Debug/
+x64/
+*.vcxproj*
+*.sln
