@@ -22,6 +22,7 @@ public:
 	double at(int row, int col) const{
 		for (int i = 0; i < rows.size(); ++i) {
 			if (rows[i] == row && cols[i] == col)return vals[i];
+			if (rows[i] > row)return 0;
 		}
 		return 0;
 	}
@@ -59,14 +60,6 @@ public:
 		this->vals = vals;
 		this->rows = rows;
 		this->cols = cols;
-		//for each (auto var in rows)
-		//{
-		//	this->row = this->row > var ? this->row : var;
-		//}
-		//for each (auto var in cols)
-		//{
-		//	this->col = this->col > var ? this->col : var;
-		//}
 		if (row_num == 0 && rows.size() != 0) this->row_num = *(rows.end() - 1) + 1;
 		else this->row_num = row_num;
 		if (col_num == 0 && cols.size() != 0) this->col_num = *(cols.end() - 1) + 1;
@@ -115,7 +108,7 @@ public:
 		return B;
 	}
 
-	SparseMatrix mul(const SparseMatrix& m2) {
+	SparseMatrix operator*(const SparseMatrix& m2) {
 		SparseMatrix res(this->row_num, m2.col_num);
 		if (this->col_num != m2.row_num) {
 			std::cout << "Shape doesn't match when calculating * ! (";
@@ -129,29 +122,14 @@ public:
 			for (int j = 0; j < res.col_num; ++j) {
 				res_val = 0;
 				for (int m = 0; m < this->col_num; ++m) {
-						res_val += this->at(i, m) * m2.at(m, j);
+					res_val += this->at(i, m) * m2.at(m, j);
 				}
-				/*p_i = 0;
-				while (this->rows[p_i] < i)
-				{
-					++p_i;
-				}
-				if (this->rows[p_i] > i) continue;
-				while (this->rows[p_i] == i) {
-					res_val += vals[p_i] * m2.at(cols[p_i], j);
-					++p_i;
-				}*/
-				//std::cout << i << "... " << j << ".... " << res_val << std::endl;
 				if (res_val != 0) {
 					res.insert(res_val, i, j);
 				}
 			}
 		}
 		return res;
-	}
-
-	SparseMatrix operator*(const SparseMatrix& m2) {
-		return this->mul(m2);
 	}
 
 	SparseMatrix operator+(const SparseMatrix& m2) {
@@ -184,8 +162,21 @@ public:
 		return res;
 	}
 
+	bool operator==(const SparseMatrix& m2) {
+		if (this->row_num != m2.row_num || this->col_num != m2.col_num ) {
+			return false;
+		}
+		for (int i = 0; i < this->row_num; ++i) {
+			for (int j = 0; j < this->col_num; ++j) {
+				if (abs(this->at(i, j) - m2.at(i, j)) > 1e-7) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	friend SparseMatrix operator*(double a, SparseMatrix x) {
-		//std::cout << "*****!: " << a << std::endl;
 		vector<double> vals;
 		for (int i = 0; i < x.vals.size(); ++i) {
 			vals.push_back(x.vals[i] * a);

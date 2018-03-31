@@ -35,10 +35,18 @@ SparseMatrix GaussianSiedel(SparseMatrix& A, SparseMatrix& b, SparseMatrix& x) {
 	SparseMatrix C = L_rev * b;
 	T.print();
 	C.print();
-	int times = 50;
+	int max_times = 500;
+	int times = max_times;
 	while (times--) {
 		x.print();
-		x = C - T * x;
+		SparseMatrix new_x = C - T * x;
+		if (new_x == x) {
+			cout << "Iterate times: " << max_times - times << endl;
+			break;
+		}
+		else {
+			x = new_x;
+		}
 	}
 	return x;
 }
@@ -47,28 +55,24 @@ SparseMatrix ConjugateGradient(SparseMatrix& A, SparseMatrix& b, SparseMatrix& x
 	SparseMatrix r = b - A*x;
 	SparseMatrix p = r;
 	r.print();
-	int times = 200;
+	int max_times = 500;
+	int times = max_times;
 	double a = 0;
 	while (times--) {
 		x.print();
-		//cout << "a" << endl;
 		a = (r.transpose() * r).at(0, 0) / (p.transpose()*A*p).at(0,0);
-		//cout << a << endl;
-		//cout << "x" << endl;
-		x = x + a*p;
-		//(a*p).print();
-		//x.print();
-
-		//cout << "r" << endl;
+		SparseMatrix new_x = x + a*p;
+		if (new_x == x) {
+			cout << "Iterate times: " << max_times - times << endl;
+			break;
+		}
+		else {
+			x = new_x;
+		}
 		SparseMatrix prev_r = r;
 		r = r - a*A*p;
-		//r.print();
-		//cout << "beta" << endl;
 		double beta = (r.transpose() * r).at(0, 0) / (prev_r.transpose()*prev_r).at(0, 0);
-		//cout << beta << endl;
-		//cout << "p" << endl;
 		p = r - beta*p;
-		//p.print();
 	}
 	return x;
 }
@@ -83,41 +87,16 @@ int main() {
 	SparseMatrix b(4, 1);
 	b.initializeFromVector(vector<int>({ 0,1,2,3 }), vector<int>({ 0,0,0,0 }), vector<double>({ 6,25,-11,15 }), 4, 1);
 	b.print();
-
-	//SparseMatrix c(4, 1);
-
-	//c.initializeFromVector(rows, cols, vals);
-	////c.initializeFromVector(vector<int>({ 0,1,2,3 }), vector<int>({ 0,0,0,0 }), vector<double>({ 6,25,-11,15 }));
-	//c.print();
-
-	//(A + c).print();
-	//(A - c).print();
-
-	//sp.insert(0.38, 0, 0);
-	//sp.print();
-	//sp.insert(0.99, 0, 3);
-	////sp.print();
-	//SparseMatrix matrix2;
-	//matrix2.initializeFromVector(vector<int>({0,0,1,1,3}), vector<int>({0,1,0,1,1}), vector<double>({1, 2,3,4,2}), 4, 2);
-	//matrix2.print();
-	//SparseMatrix m = sp * matrix2;
-	//m.print();
-	
-	//SparseMatrix L;
-	//L.initializeFromVector(vector<int>({ 0,1,1 }), vector<int>({ 0,0,1 }), vector<double>({ 16,7,-11 }));
-	//L.rev().print();
-
-	//A.initializeFromVector(vector<int>({ 0,0,1,1 }), vector<int>({ 0,1,0,1 }), vector<double>({ 16,3,7, -11 }), 2, 2);
-	////SparseMatrix b(2, 1);
-	//b.initializeFromVector(vector<int>({ 0,1 }), vector<int>({ 0,0 }), vector<double>({ 11, 13 }), 2, 1);
-
 	SparseMatrix x(4, 1);
-	//x.initializeFromVector(vector<int>({ 0,1,2,3 }), vector<int>({ 0,0,0,0 }), vector<double>({ 1,1,1,1 }), 4, 1);
+	SparseMatrix res;
 
-	//SparseMatrix x(2, 1);
-	//GaussianSiedel(A, b, x).print();
-	ConjugateGradient(A, b, x).print();
+	//res = GaussianSiedel(A, b, x);
+	res = ConjugateGradient(A, b, x);
 
+	cout << "Result:" << endl;
+	res.print();
+	
+	
 	system("pause");
 	return 0;
 }
