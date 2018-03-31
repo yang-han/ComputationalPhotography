@@ -53,7 +53,7 @@ int medianProcess(Mat& src, int y, int x, int w, int h, int ch) {
 	}
 	//cout << "- " << pixels.size() << " "<< y << "  " << x << endl;
 	//cout << pixels.size() << endl;
-	//sort(pixels.begin(), pixels.end());
+	sort(pixels.begin(), pixels.end());
 	return pixels.at(pixels.size() / 2);
 }
 
@@ -167,32 +167,34 @@ void myDFT(Mat& src, Mat& dst) {
 	split(complexMat, planes);
 	magnitude(planes[0], planes[1], planes[0]);
 	Mat mag = planes[0];
-	mag += Scalar::all(0);
+	mag += Scalar::all(1);
 
 	log(mag, mag);
 
-	normalize(mag, dst, 0, 1, CV_MINMAX);
+	normalize(mag, mag, 0, 1, CV_MINMAX);
+	mag.convertTo(dst, CV_8U, 255);
 }
 
 
-int main() {
-	//Mat mat = imread("C:\\Users\\sleepy\\OneDrive\\Pictures\\2615063031ohkhke.jpg", CV_LOAD_IMAGE_COLOR);
-	Mat mat = imread("C:\\Users\\sleepy\\OneDrive\\Pictures\\2615063031ohkhke.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+int main(int argc, char** argv) {
+	//if (argc != 3) {
+	//	cout << "Input Illegal!" << endl;
+	//}
+	char* input = argv[1];
+	char* output = argv[2];
+	//int sigma_s = atoi(argv[3]);
+	//int sigma_r = atoi(argv[4]);
+	//int sigma = atoi(argv[3]);
+	Mat mat = imread(input, CV_LOAD_IMAGE_GRAYSCALE);
 	Mat dst;
 
 	cout << mat.size() << " " << mat.type() << endl;
-	//myBoxFilter(mat, dst, 3, 3);
-	//myGaussianFilter(mat, dst, 10);
-	//myMedianFilter(mat, dst, 3, 3);
-	//myBilateralFilter(mat, dst, 5, 1.0, 1000);
+	//myBoxFilter(mat, dst, w, h);
+	//myGaussianFilter(mat, dst, sigma);
+	//myMedianFilter(mat, dst, w, h);
+	//myBilateralFilter(mat, dst, 5, sigma_s, sigma_r);
 	myDFT(mat, dst);
 
-
-	//cout << dst << endl;
-	imshow("src", mat);
-	imshow("dst", dst);
-
-	cv::waitKey(0);
-	cv::destroyAllWindows();
+	imwrite(output, dst);
 	return 0;
 }
