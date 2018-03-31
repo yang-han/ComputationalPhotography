@@ -2,8 +2,9 @@
 
 
 
-SparseMatrix::SparseMatrix()
+SparseMatrix::SparseMatrix(int row , int col):row_num(row),col_num(col)
 {
+
 }
 
 
