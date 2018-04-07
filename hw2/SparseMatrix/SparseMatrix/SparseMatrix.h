@@ -24,38 +24,23 @@ public:
 	double at(int row, int col) const{
 		for (int i = 0; i < rows.size(); ++i) {
 			if (rows[i] == row && cols[i] == col)return vals[i];
-			if (rows[i] > row)return 0;
 		}
 		return 0;
 	}
 
 	void insert(double val, int row, int col) {
-		if (val == 0)return;
-		if (this->rows.size() == 0) {
-			rows.insert(rows.begin(), row);
-			cols.insert(cols.begin(), col);
-			vals.insert(vals.begin(), val);
+		if (val == 0) {
+			return; 
 		}
 		for (int i = 0; i < rows.size(); ++i) {
 			if (rows[i] == row && cols[i] == col) {
 				vals[i] = val;
-				break;
-			}
-			if (rows[i] == row) {
-				if (i == rows.size() - 1 || cols[i]<col && cols[i + 1] > col || cols[i]<col && rows[i+1]>row){
-					rows.insert(rows.begin() + i + 1, row);
-					cols.insert(cols.begin() + i + 1, col);
-					vals.insert(vals.begin() + i + 1, val);
-					break;
-				}
-			}
-			else if (i == rows.size() - 1 || rows[i]<row && rows[i + 1] >row) {
-				rows.insert(rows.begin() + i + 1, row);
-				cols.insert(cols.begin() + i + 1, col);
-				vals.insert(vals.begin() + i + 1, val);
-				break;
+				return;
 			}
 		}
+		rows.insert(rows.end(), row);
+		cols.insert(cols.end(), col);
+		vals.insert(vals.end(), val);
 	}
 
 	void initializeFromVector(vector<int>& rows, vector<int>& cols, vector<double>& vals, int row_num = 0, int col_num = 0) {
@@ -93,8 +78,11 @@ public:
 			for (int j = 0; j < i; ++j) {
 				double val = 0;
 				for (int k = j; k <= i - 1; ++k) {
-					val += 1.0 * this->at(i, k) * B.at(k, j);
+					//cout << "A " << this->at(i, k) << " B " << B.at(k, j) << endl;
+					val += this->at(i, k) * B.at(k, j);
 				}
+
+				//cout << "B " << B.at(i, i) << " val " << val << endl;
 				B.insert(-1.0*B.at(i, i)*val, i, j);
 			}
 		}
