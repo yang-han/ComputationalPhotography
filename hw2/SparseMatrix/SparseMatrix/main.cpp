@@ -27,12 +27,12 @@ SparseMatrix GaussianSiedel(SparseMatrix& A, SparseMatrix& b, SparseMatrix& x) {
 	U.initializeFromVector(U_row, U_col, U_val, A.row_num, A.col_num);
 	L.print();
 	U.print();
-	SparseMatrix L_rev = L.inv();
-	L_rev.print();
+	SparseMatrix L_inv = L.invLowTriangle();
+	L_inv.print();
 	U.print();
 	b.print();
-	SparseMatrix T = L_rev * U;
-	SparseMatrix C = L_rev * b;
+	SparseMatrix T = L_inv * U;
+	SparseMatrix C = L_inv * b;
 	T.print();
 	C.print();
 	int max_times = 500;
@@ -90,8 +90,8 @@ int main() {
 	SparseMatrix x(4, 1);
 	SparseMatrix res;
 
-	//res = GaussianSiedel(A, b, x);
-	res = ConjugateGradient(A, b, x);
+	res = GaussianSiedel(A, b, x);
+	//res = ConjugateGradient(A, b, x);
 
 	cout << "Result:" << endl;
 	res.print();

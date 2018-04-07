@@ -3,6 +3,8 @@
 #include <iostream>
 #include <algorithm>
 using std::vector;
+using std::cout;
+using std::endl;
 
 class SparseMatrix
 {
@@ -64,7 +66,6 @@ public:
 		else this->row_num = row_num;
 		if (col_num == 0 && cols.size() != 0) this->col_num = *(cols.end() - 1) + 1;
 		else this->col_num = col_num;
-
 	};
 
 	void print() const {
@@ -83,7 +84,7 @@ public:
 		this->col_num = col_num;
 	}
 
-	SparseMatrix inv() {
+	SparseMatrix invLowTriangle() const{
 		SparseMatrix B(this->row_num, this->col_num);
 		for (int i = 0; i < B.row_num; ++i) {
 			B.insert(1.0 / this->at(i, i), i, i);
@@ -92,7 +93,7 @@ public:
 			for (int j = 0; j < i; ++j) {
 				double val = 0;
 				for (int k = j; k <= i - 1; ++k) {
-					val += this->at(i, k) * B.at(k, j);
+					val += 1.0 * this->at(i, k) * B.at(k, j);
 				}
 				B.insert(-1.0*B.at(i, i)*val, i, j);
 			}
