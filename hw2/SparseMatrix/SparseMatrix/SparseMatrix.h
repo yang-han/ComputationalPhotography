@@ -47,9 +47,21 @@ public:
 		this->vals = vals;
 		this->rows = rows;
 		this->cols = cols;
-		if (row_num == 0 && rows.size() != 0) this->row_num = *(rows.end() - 1) + 1;
+		if (row_num == 0 && rows.size() != 0) {
+			this->row_num = 0;
+			for (auto it = rows.begin(); it != rows.end(); ++it) {
+				if (*it > this->row_num)this->row_num = *it;
+			}
+			++this->row_num;
+		}
 		else this->row_num = row_num;
-		if (col_num == 0 && cols.size() != 0) this->col_num = *(cols.end() - 1) + 1;
+		if (col_num == 0 && cols.size() != 0) {
+			this->col_num = 0;
+			for (auto it = cols.begin(); it != cols.end(); ++it) {
+				if (*it > this->col_num)this->col_num = *it;
+			}
+			++this->col_num;
+		}
 		else this->col_num = col_num;
 	};
 

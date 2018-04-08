@@ -90,13 +90,13 @@ int main() {
 	SparseMatrix x(4, 1);
 	SparseMatrix res;
 
-	res = GaussianSiedel(A, b, x);
-	//res = ConjugateGradient(A, b, x);
+	//res = GaussianSiedel(A, b, x);
+	res = ConjugateGradient(A, b, x);
 
 	cout << "Result:" << endl;
 	res.print();
 	
 	
-	system("pause");
+	//system("pause");
 	return 0;
 }
