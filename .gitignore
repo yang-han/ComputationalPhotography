@@ -6,3 +6,9 @@ x64/
 *.sln
 
 submit/
+
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+
+*.exe
