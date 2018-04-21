@@ -39,7 +39,7 @@ public:
 			convertToMat(J, Jmat);
 			convertToMat(R, Rmat);
 			convertToMat(X, Xmat);
-			cv::solve(Jmat, -1*Rmat, delta, CV_SVD);
+			cv::solve(Jmat, -1 * Rmat, delta, CV_SVD);
 			double res = norm(delta, NORM_L2);
 			if (res < param.residual_tolerance) {
 				if (report != nullptr) {
@@ -48,10 +48,18 @@ public:
 				}
 				break;
 			}
+			res = norm(Jmat, NORM_L2);
+			if (res < param.gradient_tolerance) {
+				if (report != nullptr) {
+					report->stop_type = GaussNewtonReport::STOP_GRAD_TOL;
+					report->n_iter = i;
+				}
+
+			}
 			Xmat += delta;
-			X = Xmat.ptr<double>(0,0);
+			X = Xmat.ptr<double>(0, 0);
 			if (param.verbose) {
-				cout << i+1 << " time iter result: " << endl;
+				cout << i + 1 << " time iter result: " << endl;
 				cout << Xmat << endl;
 				cout << "------------" << endl;
 			}
@@ -64,7 +72,7 @@ public:
 			}
 		}
 
-		cout << "Result get after " << i <<" iterations: "<< endl;
+		cout << "Result get after " << i << " iterations: " << endl;
 		cout << Xmat << endl;
 
 		double result = 0;
@@ -74,6 +82,8 @@ public:
 		}
 		return result;
 	}
+
+private:
 	void convertToMat(double* data, Mat& mat) {
 		int n = mat.rows;
 		int m = mat.cols;
@@ -105,7 +115,7 @@ public:
 			{
 				data >> params[i][j];
 			}
-		}
+		}		
 	}
 
 	virtual int nX() const {
@@ -124,7 +134,7 @@ public:
 		{
 			for (int j = 0; j < nX; j++)
 			{
-				J[i*nX + j] = -2*params[i][j]*params[i][j]/(X[j]*X[j]*X[j]);
+				J[i*nX + j] = -2 * params[i][j] * params[i][j] / (X[j] * X[j] * X[j]);
 			}
 		}
 		for (int i = 0; i < nR; i++)
@@ -135,6 +145,27 @@ public:
 				res += params[i][j] * params[i][j] / (X[j] * X[j]);
 			}
 			R[i] = res - 1;
+		}
+	}
+
+	virtual void linearCheck() {
+		Mat data_mat(753, 3, CV_64FC1);
+
+		for (int i = 0; i < 753; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				data_mat.at<double>(i, j) = params[i][j] * params[i][j];
+			}
+		}
+
+		Mat ymat(753, 1, CV_64FC1, Scalar(1.0));
+		Mat res(3, 1, CV_64FC1);
+		cv::solve(data_mat, ymat, res, CV_SVD);
+		//cout << res << endl;
+		for (int i = 0; i < 3; ++i) {
+			double xi = res.at<double>(i, 0);
+			cout << sqrt(1/xi) << endl;
 		}
 
 	}

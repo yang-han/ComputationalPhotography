@@ -16,8 +16,11 @@ int main(int argc, char *argv[])
 	params.verbose = true;
 
 	double result = solver->solve(f, X, params, new GaussNewtonReport());
-
 	cout << "Final value: " << result << endl;
+
+	cout << "--------------------" << endl;
+	cout << "Linear Check:" << endl;
+	f->linearCheck();
 
 	delete[] X;
 	delete f;
