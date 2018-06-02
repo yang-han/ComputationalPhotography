@@ -25,6 +25,5 @@ int main(int argc, char *argv[])
 	delete[] X;
 	delete f;
 	delete solver;
-	system("pause");
 	return 0;
 }

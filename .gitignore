@@ -12,3 +12,5 @@ CMakeFiles/
 *.cmake
 
 *.exe
+*.zip
+hw4/*

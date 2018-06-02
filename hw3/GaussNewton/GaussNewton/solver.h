@@ -40,16 +40,16 @@ public:
 			convertToMat(R, Rmat);
 			convertToMat(X, Xmat);
 			cv::solve(Jmat, -1 * Rmat, delta, CV_SVD);
-			double res = norm(delta, NORM_L2);
-			if (res < param.residual_tolerance) {
+			double residual = norm(delta, NORM_L2);
+			if (residual < param.residual_tolerance) {
 				if (report != nullptr) {
 					report->stop_type = GaussNewtonReport::STOP_RESIDUAL_TOL;
 					report->n_iter = i;
 				}
 				break;
 			}
-			res = norm(Jmat, NORM_L2);
-			if (res < param.gradient_tolerance) {
+			double gradient = norm(Jmat, NORM_L2);
+			if (gradient < param.gradient_tolerance) {
 				if (report != nullptr) {
 					report->stop_type = GaussNewtonReport::STOP_GRAD_TOL;
 					report->n_iter = i;
@@ -75,11 +75,8 @@ public:
 		cout << "Result get after " << i << " iterations: " << endl;
 		cout << Xmat << endl;
 
-		double result = 0;
-		for (int i = 0; i < nR; i++)
-		{
-			result += R[i] * R[i];
-		}
+		double result = norm(Rmat, NORM_L2);
+		result = pow(result, 2);
 		return result;
 	}
 
@@ -134,7 +131,7 @@ public:
 		{
 			for (int j = 0; j < nX; j++)
 			{
-				J[i*nX + j] = -2 * params[i][j] * params[i][j] / (X[j] * X[j] * X[j]);
+				J[i*nX + j] = -2 * pow(params[i][j], 2) / pow(X[j], 3);
 			}
 		}
 		for (int i = 0; i < nR; i++)
@@ -142,7 +139,7 @@ public:
 			double res = 0;
 			for (int j = 0; j < nX; j++)
 			{
-				res += params[i][j] * params[i][j] / (X[j] * X[j]);
+				res += pow(params[i][j], 2) / pow(X[j], 2);
 			}
 			R[i] = res - 1;
 		}
@@ -155,7 +152,7 @@ public:
 		{
 			for (int j = 0; j < 3; j++)
 			{
-				data_mat.at<double>(i, j) = params[i][j] * params[i][j];
+				data_mat.at<double>(i, j) = pow(params[i][j], 2);
 			}
 		}
 
