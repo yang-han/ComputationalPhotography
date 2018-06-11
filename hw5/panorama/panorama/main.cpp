@@ -9,11 +9,11 @@ using namespace cv;
 int main() {
 	Panorama4251* panorama = new Panorama4251();
 	vector<string> file_list;
-	string base_dir = "C:\\yh\\3rdyear_spr_sum\\ComputationalPhotography\\hw5\\panorama\\panorama-data1\\";
+	string base_dir = "C:\\yh\\3rdyear_spr_sum\\ComputationalPhotography\\hw5\\panorama\\panorama-data2\\";
 
 	vector<Mat> img_list;
-	for (int i = 1538; i < 1550; ++i) {
-	//for (int i = 1599; i < 1619; ++i) {
+	//for (int i = 1538; i < 1550; ++i) {
+	for (int i = 1599; i < 1619; ++i) {
 		ostringstream ss;
 		ss << base_dir << "DSC0" << i << ".JPG";
 		Mat img = imread(ss.str(), CV_LOAD_IMAGE_COLOR);
@@ -35,9 +35,12 @@ int main() {
 	f_file >> f;
 	cout << f << endl;
 	panorama->makePanorama(img_list, output, f);
-
-
+	//Stitcher stitcher = Stitcher::createDefault();
+	//Stitcher::Status status = stitcher.stitch(img_list, output);
+	imshow("opencv", output);
+	imwrite("output.jpg", output);
 	waitKey(0);
 	destroyAllWindows();
+
 	return 0;
 }

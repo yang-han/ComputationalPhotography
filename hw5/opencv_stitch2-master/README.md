@@ -1,0 +1,3 @@
+# opencv_stitch2
+opencv实现检测全景拼接，使用了xfeatures2d中的SURF方法
+没有做blending
