@@ -206,7 +206,7 @@ class Panorama4251 : public CylindricalPanorama {
 \end{enumerate}
 这里有一个细节是如果从左往右拼接的话，最好是把左边的图片变换到右边图片的坐标系中，
 这样可以方便之后的特征点匹配和homography的计算。
-\subsection{柱面投影}
+\subsubsection{柱面投影}
 这里通过最近邻插值算法来求柱面图上的点到原图的对应位置，并用此位置的像素值作为此点的像素值。
 
 \begin{lstlisting}

@@ -1,1 +1,0 @@
-GrabCut application

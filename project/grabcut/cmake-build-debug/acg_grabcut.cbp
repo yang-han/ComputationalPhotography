@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="acg_grabcut"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\cv\;CMake Files\..\..\..\cv\opencv-3.3.1\;CMake Files\..\..\..\cv\opencv-3.3.1\build\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="E:/game/adcg/grabcut0/grabcut/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="acg_grabcut">
+				<Option output="E:/game/adcg/grabcut0/grabcut/cmake-build-debug/acg_grabcut.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/game/adcg/grabcut0/grabcut/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/build"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/include/opencv"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/core/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/flann/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/imgproc/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/ml/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/objdetect/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/photo/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/video/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/dnn/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/imgcodecs/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/shape/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/videoio/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/highgui/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/superres/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/ts/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/features2d/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/calib3d/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/stitching/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/videostab/include"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/mingw32"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/backward"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../include"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include-fixed"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 acg_grabcut"/>
+					<CompileFile command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="acg_grabcut/fast">
+				<Option output="E:/game/adcg/grabcut0/grabcut/cmake-build-debug/acg_grabcut.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/game/adcg/grabcut0/grabcut/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/build"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/include/opencv"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/core/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/flann/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/imgproc/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/ml/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/objdetect/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/photo/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/video/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/dnn/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/imgcodecs/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/shape/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/videoio/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/highgui/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/superres/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/ts/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/features2d/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/calib3d/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/stitching/include"/>
+					<Add directory="E:/game/cv/opencv-3.3.1/opencv-3.3.1/modules/videostab/include"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/mingw32"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/backward"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../include"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/include-fixed"/>
+					<Add directory="e:\tools\gcc\mingw\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 acg_grabcut/fast"/>
+					<CompileFile command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="E:/game/adcg/grabcut0/grabcut/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="E:/game/adcg/grabcut0/grabcut/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/tools/gcc/mingw/mingw/bin/mingw32-make.exe -f &quot;E:/game/adcg/grabcut0/grabcut/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/BorderMatting.cpp">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/BorderMatting.h">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/Dinic.cpp">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/Dinic.h">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/GaussMixtureModel.cpp">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/GaussMixtureModel.h">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/GrabCut.cpp">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/GrabCut.h">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/KMeansImpl.cpp">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/KMeansImpl.h">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/WindowFramework.cpp">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/WindowFramework.h">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/grabcut-advanced-cg/main.cpp">
+			<Option target="acg_grabcut"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/../../../cv/opencv-3.3.1/build/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\cv\opencv-3.3.1\build\"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/../../../cv/opencv-3.3.1/build/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\cv\opencv-3.3.1\build\"/>
+		</Unit>
+		<Unit filename="E:/game/adcg/grabcut0/grabcut/../../../cv/opencv-3.3.1/build/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\cv\opencv-3.3.1\build\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
